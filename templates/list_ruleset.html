@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block section %}
+    <h2>Edit Feed Rule</h2>
+    수정하고자 하는 Rule을 선택
+{% endblock %}
+{% block article %}
+    <ul class="entries">
+        {% for entry in entries %}
+            <li class="entry">
+                <a href="{{ url_for('my_view.change_feed_page', rule_id=entry.id) }}">
+                    <div class="list-title">{{ entry.id }}. {{ entry.title }}</div>
+                    <div class="category">{{ entry.category }}</div>
+                    <p class="list-description">: {{ entry.description }} </p>
+                </a>
+                <a href="{{ url_for('my_view.provide_rss_rule', rule_id=entry.id) }}">
+                    <img src="{{ url_for('static', filename='resource/feed-icon-14x14.png') }}"/>
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <p>
+                    No entries here.
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

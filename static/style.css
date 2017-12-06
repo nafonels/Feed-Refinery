@@ -1,0 +1,148 @@
+body {
+    font-family: Gorgia, serif;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+    height: 50px;
+    background-color: wheat;
+    font-size: 2em;
+}
+
+#topnav {
+    background-color: #444444;
+}
+
+#topnav > ul {
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0;
+    height: 44px;
+}
+
+#topnav > ul > li {
+    height: 22px;
+    margin: auto;
+    padding: 10px 20px 10px 20px;
+    float: left;
+    text-align: center;
+    color: wheat;
+    font-weight: bold;
+}
+
+.animate-left {
+    animation: animateleft 0.4s;
+}
+
+nav#sidenav {
+    z-index: 3;
+    border-right: 5px solid gray;
+    width: 260px;
+    display: block;
+    /*float: left;*/
+    position: fixed;
+    background-color: #a0a0a0;
+    margin-right: 15px;
+    height: auto;
+}
+
+#sidenav > ul {
+    list-style: none;
+    max-width: 240px;
+    background-color: aqua;
+    padding-left: 10px;
+}
+
+#sidenav > ul > li {
+    height: 22px;
+    margin: auto;
+    padding: 10px 10px 10px 20px;
+    text-align: left;
+    font-weight: bold;
+    min-width: 140px;
+    background-color: beige;
+}
+
+li.entry {
+    width: 650px;
+    margin: 0 auto 20px;
+    display: block;
+    background-color: antiquewhite;
+    border: 1px;
+    border-style: dashed;
+    padding: 0 30px;
+}
+
+.entry > a {
+    display: block;
+    margin: 10px;
+}
+
+div.list-title {
+    font-size: 1.6em;
+    font-weight: bold;
+    width: 400px;
+    float: left;
+    margin: 10px 0;
+}
+
+div.category {
+    position: relative;
+    max-width: 200px;
+    float: right;
+    margin-top: 15px;
+}
+ul.entries {
+    padding: 0;
+}
+
+p.list-description {
+    clear: both;
+    margin-top: 10px;
+}
+div.container {
+    max-width: 1000px;
+    /*position: relative;*/
+    margin: 0 auto;
+    display: block;
+}
+
+div.content {
+    margin-left: 280px;
+    transition: margin-left .4s;
+    background-color: #ffffff;
+}
+
+article {
+    /*float: right;*/
+}
+
+footer {
+    clear: both;
+}
+
+ul {
+    list-style: none;
+}
+
+label {
+    display: inline-block;
+    width: 110px;
+    margin-right: 10px;
+}
+
+input {
+    width: 500px;
+}
+
+input[type="reset"], input[type="submit"] {
+    width: 120px;
+}
+
+h2 {
+    display: inline-block;
+    margin: 10px auto;
+}

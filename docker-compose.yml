@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  db:
+    image: postgres
+    restart: always
+
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: "pg_isready -h localhost -p 5432 -q -U postgres"
+      interval: 3s
+      timeout: 1s
+      retries: 10
+  web:
+    build: .
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/app

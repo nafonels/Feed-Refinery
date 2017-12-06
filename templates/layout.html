@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feed Refinary layout</title>
+    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'style.css') }}" >-->
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="{{ url_for('static', filename = 'main.js') }}"></script>
+</head>
+<body>
+    <header>
+        Feed Refinary - RSS Recompiler
+    </header>
+    <nav id="topnav">
+        <ul>
+            <li>Feed 관리</li>
+            <li>System 관리</li>
+            <li>계정 관리</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <nav id="sidenav" class="animate-left">
+        {% block sidenav %}
+        <ul>
+            <li><a href="{{ url_for('my_view.new_feed_page') }}">새 피드 만들기</a></li>
+            <li><a href="{{ url_for('my_view.list_ruleset') }}">기존 피드 관리</a></li>
+        </ul>
+        {% endblock %}
+    </nav>
+        <div class="content">
+    <section>
+        {% block section %}
+        {% endblock %}
+    </section>
+    <article>
+        {% block article %}
+        {% endblock %}
+    </article>
+        </div>
+    </div>
+    <footer>
+    </footer>
+{% block body %}
+{% endblock %}
+</body>
+</html>

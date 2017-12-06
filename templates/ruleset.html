@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block section %}
+    {% if entry %}
+        <h2>Ruleset 수정</h2>
+    {% else %}
+        <h2>새 Ruleset 추가</h2>
+    {% endif %}
+{% endblock %}
+{% block article %}
+    {% macro input(name, value='', type='text') %}
+        <input name="{{ name }}" type="{{ type }}" id="input_{{ name }}"
+        {% if entry %}
+            {% if entry[name] %}
+            value="{{ entry[name] }}"
+            {% else %}
+               value="{{ value }}"
+            {% endif %}
+        {% else %}
+            value="{{ value }}"
+        {% endif %}
+        {% for kwarg in kwargs %}
+            {{ kwarg }}="{{ kwargs[kwarg] }}"
+        {% endfor %}>
+        <br>
+    {% endmacro %}
+    {% macro label_input(name, value='', type='text', labeltext='') %}
+        {% if labeltext == '' %}
+            <label for="input_{{ name }}">{{ name }}</label>
+        {% else %}
+            <label>{{ labeltext }}</label>
+        {% endif %}
+        {% call input(name, value, type, **kwargs) %}
+        {% endcall %}
+    {% endmacro %}
+    <form {% if entry %}
+        {#        html form에서는 put method 사용불가 #}
+        action="{{ url_for('my_view.modify_ruleset') }}" method="post"
+    {% else %}
+        action="{{ url_for('my_view.add_ruleset') }}" method="post"
+    {% endif %}>
+        {{ input('id', type='hidden') }}
+        <fieldset>
+            <legend>Feed Information :</legend>
+            {{ label_input('title') }}
+            {{ label_input('listUrl', labeltext='Listurl') }}
+            {{ label_input('encoding', value='utf-8') }}
+            {{ label_input('description', labeltext='Description') }}
+            {{ label_input('category', labeltext='category') }}
+        </fieldset>
+        <fieldset>
+            <legend>List of items :</legend>
+            {{ label_input('itemlink', labeltext='Itemlink') }}
+            {{ label_input('nextpagelink', labeltext='NextpageLink') }}
+            {{ label_input('maxcheckpage', labeltext='MaxCheckpage', type='number', value='3', min='1', step='1') }}
+        </fieldset>
+        <fieldset>
+            <legend>Item Propertise :</legend>
+            {{ label_input('itemtitle', labeltext='ItemTitle') }}
+            {{ label_input('itemauthor', labeltext='ItemAuthor') }}
+            {{ label_input('itemcategory', labeltext='itemCategory') }}
+            {{ label_input('itemdescription', labelText='itemDescription') }}
+            {{ label_input('itemguidtype', labeltext='ItemGuidType') }}
+            {{ label_input('itemguidfrom', labeltext='ItemGuidFrom') }}
+            {{ label_input('itemguid', labeltext='ItemGuid') }}
+            {{ label_input('itempub_date', labeltext='iItempub_date') }}
+            {{ label_input('itempub_date_format', labeltext='Itempub_date_format') }}
+        </fieldset>
+        {{ input('reset', type='reset', value='Reset form') }}
+        {% if entry %}
+            {{ input('submit', type='submit', value='Change Ruleset') }}
+        {% else %}
+            {{ input('submit', type='submit', value='Make Ruleset') }}
+        {% endif %}
+        {#        <label></label><input type="reset" value="Reset">#}
+        {#        <label></label><input type="submit" value="Make Ruleset">#}
+    </form>
+{% endblock %}
+{% block body %}
+{% endblock %}
